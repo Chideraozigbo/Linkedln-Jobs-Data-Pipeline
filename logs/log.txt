@@ -1,0 +1,87 @@
+2024-07-10 23:55:28 - ETL Job Started
+2024-07-10 23:55:36 - Extract Task Started
+2024-07-10 23:55:47 - Extract Task Ended
+2024-07-10 23:55:47 - Transform Task Started
+2024-07-10 23:55:47 - Began the renaming of columns
+2024-07-10 23:55:47 - ['title', 'comapnyURL1', 'comapnyURL2', 'companyId', 'companyUniversalName', 'companyName', 'salaryInsights', 'applicants', 'formattedLocation', 'formattedEmploymentStatus', 'formattedExperienceLevel', 'formattedIndustries', 'jobDescription', 'inferredBenefits', 'jobFunctions', 'companyApplyUrl', 'jobPostingUrl', 'listedAt']
+2024-07-10 23:55:47 - Completed the task of renaming columns
+2024-07-10 23:55:47 - ['JobTitle', 'CompanyURL1', 'CompanyURL2', 'CompanyId', 'CompanyUniversalName', 'CompanyName', 'SalaryInsights', 'NoOfApplicants', 'CompanyLocation', 'EmploymentStatus', 'ExperienceLevel', 'Industries', 'JobDescription', 'Benefits', 'JobFunctions', 'CompanyApplicationUrl', 'JobPostingUrl', 'PostedDate']
+2024-07-10 23:55:47 - Began the task of replacing null values
+2024-07-10 23:55:47 - Completed the task of replacing null values
+2024-07-10 23:55:47 - JobTitle                 object
+CompanyURL1              object
+CompanyURL2              object
+CompanyId                object
+CompanyUniversalName     object
+CompanyName              object
+SalaryInsights           object
+NoOfApplicants           object
+CompanyLocation          object
+EmploymentStatus         object
+ExperienceLevel          object
+Industries               object
+JobDescription           object
+Benefits                 object
+JobFunctions             object
+CompanyApplicationUrl    object
+JobPostingUrl            object
+PostedDate               object
+dtype: object
+2024-07-10 23:55:47 - JobTitle                              object
+CompanyURL1                           object
+CompanyURL2                           object
+CompanyId                              int64
+CompanyUniversalName                  object
+CompanyName                           object
+SalaryInsights                       float64
+NoOfApplicants                       float64
+CompanyLocation                       object
+EmploymentStatus                      object
+ExperienceLevel                       object
+Industries                            object
+JobDescription                        object
+Benefits                              object
+JobFunctions                          object
+CompanyApplicationUrl                 object
+JobPostingUrl                         object
+PostedDate               datetime64[ns, UTC]
+dtype: object
+2024-07-10 23:55:47 -                                 JobTitle  \
+0                         Data Scientist   
+1  Data and Processing Systems Engineer    
+
+                                         CompanyURL2  CompanyId  \
+0  https://www.linkedin.com/company/avantgardefou...   35451449   
+1   https://www.linkedin.com/company/conde-group-inc      99386   
+
+                          CompanyName  SalaryInsights  NoOfApplicants  \
+0  AG Foundry - Recruiting & Staffing             NaN            67.0   
+1                   Conde Group, Inc.             NaN            12.0   
+
+   CompanyLocation EmploymentStatus   ExperienceLevel  \
+0    United States        Full-time  Mid-Senior level   
+1  Santa Clara, CA        Full-time  Mid-Senior level   
+
+                           Industries Benefits  \
+0     Gambling Facilities and Casinos            
+1  Automation Machinery Manufacturing            
+
+                                       JobPostingUrl                PostedDate  
+0  https://www.linkedin.com/jobs/view/3972518893/... 2024-07-10 19:42:48+00:00  
+1  https://www.linkedin.com/jobs/view/3969544504/... 2024-07-10 20:44:49+00:00  
+2024-07-10 23:55:47 - Preparing to save the data
+2024-07-10 23:55:47 - Data Saved to csv
+2024-07-10 23:55:47 - Transform Task Ended
+2024-07-10 23:55:47 - Creating job table in my database
+2024-07-10 23:55:47 - Making attempt to connect to the database to execute a query
+2024-07-10 23:55:47 - Making attempt to connect to the database
+2024-07-10 23:55:47 - Database connection successful
+2024-07-10 23:55:47 - Executing SQL Query
+2024-07-10 23:55:47 - Query Executed Successfully
+2024-07-10 23:55:47 - Created the job table in my database
+2024-07-10 23:55:47 - Making attempt to connect to the database to upload data
+2024-07-10 23:55:47 - Making attempt to connect to the database
+2024-07-10 23:55:47 - Database connection successful
+2024-07-10 23:55:47 - Attempting to upload the data
+2024-07-10 23:55:47 - Data uploaded successfully
+2024-07-10 23:55:47 - ETL Task Completed. So, I fit go sleep. Lol

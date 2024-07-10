@@ -1,3 +1,4 @@
+#%%
 # Libraries import
 import json
 import pandas as pd
@@ -7,12 +8,12 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 from sqlalchemy import create_engine
-
+#%%
 # Defined parameters
 header_file = '/Users/user/Documents/Linkedln data project/config/header.json'
 url = "https://linkedin-data-scraper.p.rapidapi.com/search_jobs"
 logfile = r'/Users/user/Documents/Linkedln data project/logs/log.txt'
-
+#%%
 # Database Credentials
 load_dotenv()
 
@@ -27,11 +28,11 @@ db_details = {
     'password': password,
     'database': database
 }
-
+#%%
 # Loading my header file that contains my API key
 with open(header_file, 'r') as file:
     header = json.load(file)
-
+#%%
 # logging function
 def logging(message, log_print=False):
     timeformat = '%Y-%m-%d %H:%M:%S'
@@ -43,7 +44,7 @@ def logging(message, log_print=False):
         
     if log_print:
         print(f"{time} - {message}")
-
+#%%
 # Extract function
 def extract_data(url):
     payload = {
@@ -55,7 +56,7 @@ def extract_data(url):
     response = requests.post(url, json=payload, headers=header)
     data = response.json()['response']
     return data
-
+#%%
 # Transform function
 def transform(data):
     main = []
@@ -143,7 +144,7 @@ def transform(data):
         logging(f"Failed to save the data because of this error: {e}", log_print=True)
     
     return df
-
+#%%
 # connection function
 def connection():
     try:
@@ -154,7 +155,7 @@ def connection():
         logging(f"Connection failed because of this error: {e}", log_print=True)
         mydb = None
     return mydb
-
+#%%
 # execute_query function
 def execute_query(query):
     try:
@@ -174,7 +175,7 @@ def execute_query(query):
                 mydb.close()
     except Exception as e:
         logging(f"Connection failed because of this error: {e}", log_print=True)
-
+#%%
 # upload_query function
 def upload_data(dataframe, table, upload_type='append'):
     try:
@@ -198,10 +199,10 @@ def upload_data(dataframe, table, upload_type='append'):
                 mydb.close()
     except Exception as e:
         logging(f"Connection failed because of this error: {e}", log_print=True)
-
+#%%
 # Logging my ETL information
 logging('ETL Job Started', log_print=True)
-
+#%%
 try:
     logging('Extract Task Started', log_print=True)
     extract_task = extract_data(url)
@@ -239,3 +240,5 @@ try:
     logging('ETL Task Completed. So, I fit go sleep. Lol', log_print=True)
 except Exception as e:
     logging(f'Omo, error dey one place ooh, go debug. This na why e fail: {e}', log_print=True)
+
+# %%
