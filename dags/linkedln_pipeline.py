@@ -51,10 +51,7 @@ def extract_data(ti):
     output_file = [file_path, file_name]
     return output_file
 
-def download_from_s3(bucket_name, s3_key, local_path):
-    s3 = boto3.client('s3')
-    s3.download_file(bucket_name, s3_key, local_path)
-    return local_path
+
 
 default_args = {
     'owner': 'Chidera',
