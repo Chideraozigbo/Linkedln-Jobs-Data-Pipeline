@@ -66,6 +66,10 @@ This project involves extracting job listing data from the LinkedIn API, process
 
 - Ensure your Lambda functions are properly set up with the necessary permissions to access the S3 buckets and trigger based on S3 events.
 
+## Documentation
+
+For the documentation of this project on medium, Kindly have a read here [Medium Documentation](https://medium.com/@chideraozigbo/linkedin-jobs-data-etl-pipeline-190e10810fa1)
+
 ## Contact
 
 For any queries, please contact `chideraozigbo@gmail.com`.
