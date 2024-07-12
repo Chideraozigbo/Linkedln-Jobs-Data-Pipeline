@@ -12,9 +12,13 @@ from airflow.sensors.filesystem import FileSensor
 from airflow.operators.email import EmailOperator
 import boto3
 from airflow.utils.task_group import TaskGroup
+from airflow.providers.amazon.aws.transfers.s3_to_redshift import S3ToRedshiftOperator
 
 # Defined parameters
 header_file = '/home/ubuntu/airflow/config/config.json'
+
+# Defined bucket name
+s3_bucket = 'cleanedlinkedlndata'
 
 # Loading my header file that contains my api key
 with open(header_file, 'r') as file:
@@ -85,7 +89,7 @@ with DAG('linkedln_dag', default_args=default_args, start_date=datetime(2024, 7,
 
         s3_file_sensor = S3KeySensor(
             task_id='s3_key_sensor_task',
-            bucket_name='cleanedlinkedlndata',
+            bucket_name=s3_bucket,
             bucket_key="{{ ti.xcom_pull(task_ids='extract_data_task')[1] }}",
             aws_conn_id='aws_default',
             timeout=60,
@@ -93,7 +97,24 @@ with DAG('linkedln_dag', default_args=default_args, start_date=datetime(2024, 7,
             wildcard_match=False
         )
 
-        file_sensor_task >> load_Data_from_EC2_into_S3 >> s3_file_sensor
+        load_from_s3_to_redshift = S3ToRedshiftOperator(
+        task_id="s3_to_redshift_task",
+        aws_conn_id='aws_default',
+        redshift_conn_id='redshift_default',
+        s3_bucket=s3_bucket,
+        s3_key="{{ ti.xcom_pull(task_ids='extract_data_task')[1] }}",
+        schema="public",
+        table="Jobs",
+        copy_options=[
+        "csv",
+        "IGNOREHEADER 1",
+        "NULL AS ''",
+        "TIMEFORMAT 'auto'",
+        "MAXERROR 100"
+        ]
+        )
+
+        file_sensor_task >> load_Data_from_EC2_into_S3 >> s3_file_sensor >> load_from_s3_to_redshift
 
     email_task = EmailOperator(
         task_id='send_email',
