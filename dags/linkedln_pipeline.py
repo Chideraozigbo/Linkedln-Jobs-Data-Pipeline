@@ -66,7 +66,7 @@ default_args = {
     'retry_delay': timedelta(seconds=10)
 }
 
-with DAG('linkedln_dag', default_args=default_args, start_date=datetime(2024, 7, 7), catchup=False) as linkedln_dag:
+with DAG('linkedln_dag', default_args=default_args, start_date=datetime(2024, 7, 7), schedule_interval = '*/10 * * * *', catchup=False) as linkedln_dag:
 
     extract_task = PythonOperator(
         task_id='extract_data_task',
