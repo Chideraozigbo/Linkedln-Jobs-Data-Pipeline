@@ -110,8 +110,10 @@ with DAG('linkedln_dag', default_args=default_args, start_date=datetime(2024, 7,
         "IGNOREHEADER 1",
         "NULL AS ''",
         "TIMEFORMAT 'auto'",
-        "MAXERROR 100"
-        ]
+        "MAXERROR 100",
+        "EMPTYASNULL",
+        "BLANKSASNULL"
+         ],
         )
 
         file_sensor_task >> load_Data_from_EC2_into_S3 >> s3_file_sensor >> load_from_s3_to_redshift

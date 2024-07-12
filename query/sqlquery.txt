@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS public.Jobs (
+    id int IDENTITY(1, 1) PRIMARY key ,
+    JobTitle VARCHAR(255),
+    CompanyURL2 VARCHAR(255),
+    CompanyId FLOAT,
+    CompanyName VARCHAR(255),
+    SalaryInsights VARCHAR(255),
+    NoOfApplicants FLOAT,
+    CompanyLocation VARCHAR(255),
+    EmploymentStatus VARCHAR(50),
+    ExperienceLevel VARCHAR(50),
+    Industries VARCHAR(255),
+    Benefits VARCHAR(255),
+    JobPostingUrl VARCHAR(255),
+    PostedDate TIMESTAMPTZ
+);
