@@ -71,7 +71,7 @@ The workflow will run automatically according to the schedule. To run it manuall
 
 - Make sure to keep your API key and email credentials secure.
 - The extracted data will be saved in the file/ directory with a timestamp in the filename.
-- Check the logs/log.txt file for execution logs.
+- Check the `logs/log.txt` file for execution logs.
 
 ### Troubleshooting
 If you encounter any issues:
