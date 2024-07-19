@@ -1,0 +1,51 @@
+name: Weekly LinkedIn Data Extraction
+
+on:
+  schedule:
+    # This should run every sunday by 10am
+    - cron: '0 10 * * 0'
+  workflow_dispatch:
+
+jobs:
+  process-linkedin-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11.7'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install python-dotenv
+
+    - name: Create config file
+      run: |
+        echo '${{ secrets.LINKEDIN_API_CONFIG }}' > config/config.json
+
+    - name: Run LinkedIn data processing script
+      run: python pipeline.py
+
+    - name: Find most recent CSV file
+      id: find_csv
+      run: |
+        LATEST_CSV=$(ls -t file/Linkedln_Data_*.csv | head -n1)
+        echo "latest_csv=$LATEST_CSV" >> $GITHUB_OUTPUT
+
+    - name: Send email with CSV file
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{secrets.EMAIL_USER}}
+        password: ${{secrets.EMAIL_PASS}}
+        subject: Weekly LinkedIn Data CSV File
+        body: Please find attached the latest job posting for data engineer on LinkedIn in the csv .
+        to: chidera.ozigbo.241418@unn.edu.ng
+        from: GitHub Actions
+        attachments: ${{ steps.find_csv.outputs.latest_csv }}
