@@ -26,6 +26,7 @@ jobs:
 
     - name: Create config file
       run: |
+        mkdir -p config
         echo '${{ secrets.LINKEDIN_API_CONFIG }}' > config/config.json
 
     - name: Run LinkedIn data processing script
