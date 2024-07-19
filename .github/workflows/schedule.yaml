@@ -3,7 +3,7 @@ name: Weekly LinkedIn Data Extraction
 on:
   schedule:
     # This should run every sunday by 10am
-    - cron: '0 10 * * 0'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
