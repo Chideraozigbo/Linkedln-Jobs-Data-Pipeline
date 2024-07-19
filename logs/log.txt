@@ -1,0 +1,11 @@
+2024-07-19 23:52:22 - ETL Job Started
+2024-07-19 23:52:22 - Extract Task Started
+2024-07-19 23:52:30 - Extract Task Ended
+2024-07-19 23:52:30 - Transform Task Started
+2024-07-19 23:52:30 - Began the renaming of columns
+2024-07-19 23:52:30 - Began the task of replacing null values
+2024-07-19 23:52:30 - Completed the task of replacing null values
+2024-07-19 23:52:30 - Preparing to save the data
+2024-07-19 23:52:30 - Data Saved to csv
+2024-07-19 23:52:30 - Transform Task Ended
+2024-07-19 23:52:30 - ETL Task Completed. So, I fit go sleep. Lol
