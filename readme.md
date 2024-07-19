@@ -16,8 +16,8 @@ This project extracts job data from LinkedIn based on specified keywords and loc
 2. Clone your forked repository:
 
 ``` bash
-git clone https://github.com/your-username/repository-name.git
-cd repository-name
+git clone https://github.com/Chideraozigbo/Linkedln-Jobs-Data-Pipeline.git
+cd Linkedln-Jobs-Data-Pipeline
 ```
 ### Changing the Job Keyword
 
