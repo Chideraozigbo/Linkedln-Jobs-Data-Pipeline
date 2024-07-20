@@ -56,7 +56,7 @@ Note: You can choose any desired State and Country of your choice in the keyword
 
 ### Customizing the Workflow
 
-1. Open the `.github/workflows/linkedin_data_extraction.yml` file.
+1. Open the `.github/workflows/schedule.yml` file.
 2. Modify the cron schedule if needed (currently set to run every Sunday at 10:00 AM).
 3. Update the email recipient in the "Send email with CSV file" step if desired.
 
