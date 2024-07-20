@@ -37,7 +37,7 @@ def logging(message, log_print=False):
 def extract_data(url):
     payload = {
         "keywords": "Junior Data Engineer",
-        "location": "California, United States",
+        "location": "New Brunswick, Canada",
         "count": 100
     }
     
