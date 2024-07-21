@@ -37,8 +37,8 @@ def logging(message, log_print=False):
 def extract_data(url):
     payload = {
         "keywords": "Junior Data Engineer",
-        "location": "Dublin, Ireland",
-        "count": 100
+        "location": "Ontario, Canada",
+        "count": 20
     }
     
     response = requests.post(url, json=payload, headers=header)
