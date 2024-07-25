@@ -37,7 +37,7 @@ This project involves extracting job listing data from the LinkedIn API, process
 
 ## Architecture Diagram
 
-![Architecture Diagram](airflow/architecture.png)
+![Architecture Diagram](architecture.png)
 
 ## Dependencies
 
